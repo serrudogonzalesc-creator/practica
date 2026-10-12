@@ -45,3 +45,587 @@
 <script src="app.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Una dedicatoria para ti · Eres mi lugar favorito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --noche: #2a1245;
+  --ciruela: #4a1d6b;
+  --rosa: #ff8fb8;
+  --chicle: #ffc2da;
+  --lila: #c9a7ff;
+  --durazno: #ffd9c7;
+  --luz: #fff4fa;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--luz);
+  background: radial-gradient(ellipse at 20% 10%, #7a2f8f 0%, transparent 55%),
+              radial-gradient(ellipse at 85% 90%, #e0568f 0%, transparent 50%),
+              linear-gradient(160deg, var(--noche), var(--ciruela));
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Portada del sobre */
+.portada {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.4rem;
+  transition: opacity 0.5s ease;
+}
+
+.para {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2.3rem;
+  color: var(--chicle);
+}
+
+h1 {
+  font-family: 'Pinyon Script', cursive;
+  font-weight: 400;
+  font-size: clamp(3rem, 13vw, 5.4rem);
+  line-height: 1.05;
+  background: linear-gradient(90deg, var(--chicle), var(--lila), var(--durazno));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 143, 184, .45));
+}
+
+.pista {
+  font-size: .95rem;
+  color: var(--lila);
+  letter-spacing: .04em;
+}
+
+/* Animación del sobre */
+.sobre {
+  position: relative;
+  width: 170px;
+  height: 115px;
+  border: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  background: linear-gradient(145deg, var(--chicle), var(--rosa));
+  box-shadow: 0 14px 40px rgba(255, 143, 184, .4);
+  animation: flota 3.2s ease-in-out infinite;
+  margin-top: .5rem;
+  transition: transform 0.3s ease;
+}
+
+.sobre:active {
+  transform: scale(0.96);
+}
+
+.sobre-tapa {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 62px;
+  background: linear-gradient(160deg, #ffd9e8, var(--rosa));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-radius: 10px 10px 0 0;
+  transform-origin: top;
+  transition: transform .7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sobre-corazon {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  color: #c2255c;
+  transition: transform 0.3s ease;
+}
+
+.sobre:hover .sobre-tapa,
+.sobre:focus-visible .sobre-tapa,
+.sobre.abriendo .sobre-tapa {
+  transform: rotateX(180deg);
+}
+
+.sobre:focus-visible {
+  outline: 3px solid var(--luz);
+  outline-offset: 6px;
+}
+
+@keyframes flota {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-1.5deg); }
+}
+
+/* Carta de papel */
+.carta {
+  animation: aparecer 0.8s ease-out;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.papel {
+  background: linear-gradient(180deg, #fff7fb, #ffe9f2);
+  color: #4a2154;
+  border-radius: 22px;
+  padding: 2.4rem 1.8rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+  border: 2px dashed var(--rosa);
+  outline: 8px solid rgba(255, 255, 255, .08);
+  position: relative;
+}
+
+.linea {
+  font-size: 1.15rem;
+  line-height: 1.85;
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .9s ease;
+}
+
+.linea.ver {
+  opacity: 1;
+  transform: none;
+}
+
+.firma {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2.1rem;
+  margin-top: 1.8rem;
+  color: #b3246a;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.de {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2.6rem;
+  color: #7a2f8f;
+  opacity: 0;
+  transition: opacity 1.2s .4s ease;
+}
+
+.firma.ver, .de.ver {
+  opacity: 1;
+}
+
+.acciones-carta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btn-cerrar {
+  background: none;
+  border: 1px solid rgba(255, 194, 218, .5);
+  color: var(--durazno);
+  font-size: .85rem;
+  padding: .4rem .9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.btn-cerrar:hover {
+  background: rgba(255, 255, 255, .15);
+  color: var(--luz);
+}
+
+/* Libro de mensajes */
+.libro {
+  margin-top: 2.5rem;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 194, 218, .35);
+  border-radius: 20px;
+  padding: 1.6rem;
+  backdrop-filter: blur(6px);
+}
+
+.libro h2 {
+  font-family: 'Pinyon Script', cursive;
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: var(--chicle);
+  margin-bottom: 1rem;
+}
+
+form {
+  display: grid;
+  gap: .7rem;
+}
+
+input, textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--luz);
+  background: rgba(42, 18, 69, .55);
+  border: 1px solid var(--lila);
+  border-radius: 12px;
+  padding: .7rem .9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #d9c3f0;
+}
+
+input:focus, textarea:focus, form button:focus-visible {
+  border-color: var(--rosa);
+  box-shadow: 0 0 10px rgba(255, 143, 184, 0.4);
+}
+
+form button {
+  justify-self: start;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: 0;
+  border-radius: 999px;
+  padding: .65rem 1.5rem;
+  color: #4a1d6b;
+  background: linear-gradient(90deg, var(--chicle), var(--durazno));
+  transition: transform .2s, box-shadow .2s;
+}
+
+form button:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 15px rgba(255, 194, 218, 0.4);
+}
+
+#aviso {
+  min-height: 1.2rem;
+  font-size: .9rem;
+  color: var(--durazno);
+}
+
+#mensajes {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: .8rem;
+  margin-top: 1rem;
+}
+
+#mensajes li {
+  background: rgba(255, 255, 255, .1);
+  border-left: 4px solid var(--rosa);
+  border-radius: 12px;
+  padding: .8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mensaje-contenido {
+  flex-grow: 1;
+}
+
+#mensajes b {
+  color: var(--chicle);
+  display: block;
+  font-size: 0.95rem;
+}
+
+#mensajes p {
+  margin-top: .2rem;
+  overflow-wrap: anywhere;
+  color: var(--luz);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.btn-borrar {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0 0 0 0.5rem;
+  transition: color 0.2s;
+}
+
+.btn-borrar:hover {
+  color: var(--rosa);
+}
+
+/* Lluvia de partículas en el fondo */
+.cielo {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.deco {
+  position: absolute;
+  top: -10vh;
+  animation: cae linear infinite;
+  opacity: .8;
+  user-select: none;
+}
+
+@keyframes cae {
+  to {
+    transform: translateY(115vh) rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre, .deco { animation: none; }
+  .linea, .firma, .de { transition: none; }
+  .deco { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="cielo" id="cielo" aria-hidden="true"></div>
+
+<main>
+  <!-- Portada interactiva con el sobre -->
+  <section id="portada" class="portada">
+    <p class="para" id="para">Para ti</p>
+    <h1 id="titulo">Eres mi lugar favorito</h1>
+    <button id="abrir" class="sobre" aria-label="Abrir la carta">
+      <span class="sobre-tapa"></span>
+      <span class="sobre-corazon">♥</span>
+    </button>
+    <p class="pista">Toca el sobre para abrirlo</p>
+  </section>
+
+  <!-- Carta abierta con dedicatoria y mensajes -->
+  <section id="carta" class="carta" hidden>
+    <div class="papel">
+      <div id="lineas"></div>
+      <p class="firma" id="firma"></p>
+      <p class="de" id="de"></p>
+    </div>
+
+    <div class="acciones-carta">
+      <button id="volver" class="btn-cerrar">↩ Cerrar y guardar en el sobre</button>
+    </div>
+
+    <div class="libro">
+      <h2>Mensajes para ti</h2>
+      <form id="form">
+        <input id="nombre" maxlength="40" placeholder="Tu nombre" autocomplete="off">
+        <textarea id="texto" maxlength="300" rows="3" placeholder="Escribe algo bonito…" required></textarea>
+        <button type="submit">Dejar mensaje</button>
+        <p id="aviso" role="status"></p>
+      </form>
+      <ul id="mensajes"></ul>
+    </div>
+  </section>
+</main>
+
+<script>
+// ==========================================
+// DATOS DE LA DEDICATORIA
+// Puedes personalizar estos textos cuando quieras:
+// ==========================================
+const dedicatoriaData = {
+  para: "Para ti",
+  titulo: "Eres mi lugar favorito",
+  carta: [
+    "Hay personas que llegan y, sin hacer ruido, cambian el color de todo.",
+    "Gracias por cada risa, por cada abrazo y por quedarte incluso en los días grises.",
+    "Contigo aprendí que la felicidad cabe en las cosas pequeñas: un mensaje, una mirada, un 'aquí estoy'.",
+    "Ojalá este rinconcito te recuerde, cada vez que lo abras, cuánto te quiero."
+  ],
+  firma: "Con todo mi cariño",
+  de: "Carlos",
+  fecha: "2026"
+};
+
+const $ = id => document.getElementById(id);
+
+// 1. Decoración: pétalos, corazones y estrellitas cayendo
+(function decorar() {
+  const formas = ['♥', '✿', '✦', '❀', '♡'];
+  const colores = ['#ffc2da', '#ff8fb8', '#c9a7ff', '#ffd9c7'];
+  const cielo = $('cielo');
+  for (let i = 0; i < 24; i++) {
+    const s = document.createElement('span');
+    s.className = 'deco';
+    s.textContent = formas[i % formas.length];
+    s.style.left = Math.random() * 100 + 'vw';
+    s.style.fontSize = 12 + Math.random() * 22 + 'px';
+    s.style.color = colores[i % colores.length];
+    s.style.animationDuration = 8 + Math.random() * 12 + 's';
+    s.style.animationDelay = -Math.random() * 20 + 's';
+    cielo.appendChild(s);
+  }
+})();
+
+function crear(tag, texto, clase) {
+  const el = document.createElement(tag);
+  el.textContent = texto;
+  if (clase) el.className = clase;
+  return el;
+}
+
+// 2. Cargar contenido de la dedicatoria en la página
+function cargarDedicatoria() {
+  const d = dedicatoriaData;
+  $('para').textContent = d.para || '';
+  $('titulo').textContent = d.titulo || '';
+  document.title = (d.titulo ? d.titulo + ' · ' : '') + 'Dedicatoria';
+  $('firma').textContent = d.firma || '';
+  $('de').textContent = [d.de, d.fecha].filter(Boolean).join(' · ');
+  
+  const contenedorLineas = $('lineas');
+  contenedorLineas.replaceChildren();
+  (d.carta || []).forEach(t => {
+    contenedorLineas.appendChild(crear('p', t, 'linea'));
+  });
+}
+
+// 3. Sistema de mensajes persistente en el navegador (localStorage)
+const STORAGE_KEY = 'dedicatoria_mensajes_guardados';
+
+function obtenerMensajesGuardados() {
+  try {
+    const guardados = localStorage.getItem(STORAGE_KEY);
+    return guardados ? JSON.parse(guardados) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function guardarMensajesEnStorage(lista) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(lista));
+  } catch (e) {
+    console.error('No se pudo guardar en localStorage', e);
+  }
+}
+
+function pintarMensajes(lista) {
+  const ul = $('mensajes');
+  ul.replaceChildren();
+  lista.forEach((m, index) => {
+    const li = document.createElement('li');
+    
+    const div = document.createElement('div');
+    div.className = 'mensaje-contenido';
+    div.append(crear('b', m.nombre), crear('p', m.texto));
+    
+    const btnBorrar = document.createElement('button');
+    btnBorrar.className = 'btn-borrar';
+    btnBorrar.setAttribute('aria-label', 'Eliminar mensaje');
+    btnBorrar.title = 'Eliminar';
+    btnBorrar.textContent = '×';
+    btnBorrar.addEventListener('click', () => {
+      lista.splice(index, 1);
+      guardarMensajesEnStorage(lista);
+      pintarMensajes(lista);
+    });
+
+    li.append(div, btnBorrar);
+    ul.appendChild(li);
+  });
+}
+
+// 4. Interacción para abrir el sobre
+$('abrir').addEventListener('click', () => {
+  $('abrir').classList.add('abriendo');
+  setTimeout(() => {
+    $('portada').hidden = true;
+    $('carta').hidden = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Revelado secuencial de cada párrafo
+    const items = [...document.querySelectorAll('.linea'), $('firma'), $('de')];
+    items.forEach((el, i) => {
+      setTimeout(() => el.classList.add('ver'), 400 + i * 1100);
+    });
+  }, 450);
+});
+
+// 5. Opción para cerrar y volver al sobre
+$('volver').addEventListener('click', () => {
+  $('carta').hidden = true;
+  $('portada').hidden = false;
+  $('abrir').classList.remove('abriendo');
+  const items = [...document.querySelectorAll('.linea'), $('firma'), $('de')];
+  items.forEach(el => el.classList.remove('ver'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 6. Formulario para agregar mensajes
+$('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const nombreInput = $('nombre').value.trim().slice(0, 40);
+  const textoInput = $('texto').value.trim().slice(0, 300);
+
+  if (!textoInput) {
+    $('aviso').textContent = 'Escribe un mensaje bonito primero.';
+    return;
+  }
+
+  const nombre = nombreInput || 'Alguien especial';
+  const mensajes = obtenerMensajesGuardados();
+  mensajes.unshift({ nombre, texto: textoInput });
+  guardarMensajesEnStorage(mensajes);
+  pintarMensajes(mensajes);
+
+  $('texto').value = '';
+  $('aviso').textContent = 'Mensaje guardado ♥';
+  setTimeout(() => {
+    if ($('aviso').textContent === 'Mensaje guardado ♥') {
+      $('aviso').textContent = '';
+    }
+  }, 3500);
+});
+
+// Inicialización
+cargarDedicatoria();
+pintarMensajes(obtenerMensajesGuardados());
+</script>
+</body>
+</html>
