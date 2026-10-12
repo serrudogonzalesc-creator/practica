@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Una dedicatoria para ti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="cielo" id="cielo" aria-hidden="true"></div>
+
+<main>
+  <section id="portada" class="portada">
+    <p class="para" id="para"></p>
+    <h1 id="titulo"></h1>
+    <button id="abrir" class="sobre" aria-label="Abrir la carta">
+      <span class="sobre-tapa"></span>
+      <span class="sobre-corazon">♥</span>
+    </button>
+    <p class="pista">Toca el sobre para abrirlo</p>
+  </section>
+
+  <section id="carta" class="carta" hidden>
+    <div class="papel">
+      <div id="lineas"></div>
+      <p class="firma" id="firma"></p>
+      <p class="de" id="de"></p>
+    </div>
+
+    <div class="libro">
+      <h2>Mensajes para ti</h2>
+      <form id="form">
+        <input id="nombre" maxlength="40" placeholder="Tu nombre" autocomplete="off">
+        <textarea id="texto" maxlength="300" rows="3" placeholder="Escribe algo bonito…" required></textarea>
+        <button type="submit">Dejar mensaje</button>
+        <p id="aviso" role="status"></p>
+      </form>
+      <ul id="mensajes"></ul>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
